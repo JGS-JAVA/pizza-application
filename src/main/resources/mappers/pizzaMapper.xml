@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.pizza.mapper.PizzaMapper">
+    <select id="getAllPizzas">
+
+        SELECT id, title, author, genre, imagePath
+        FROM books
+
+    </select>
+
+    <select id="getPizzaById">
+        select *
+        from pizzamenu
+        where id = #{id}
+    </select>
+
+    <insert id="insertPizza">
+        INSERT into pizzamenu (name, price, description, image_path)
+        VALUES (#{title}, #{author}, #{genre}, #{image_Path})
+    </insert>
+
+    <update id="editPizza">
+        update pizzamenu
+        set name=#{name},
+            price=#{price},
+            description=#{description},
+            image_path=#{image_path}
+        where id = #{id}
+
+    </update>
+</mapper>

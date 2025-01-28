@@ -27,10 +27,17 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
     $.ajax({
-        url:
-        method:
-    success: function(data) {
-        $('#pizza-list tbody').append(`
+        url: "/api/pizza/insert",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            title: $("#title").val(),
+            price: $("#author").val(),
+            description: $("#genre").val(),
+            image: $("#image").val()
+        }),
+        success: function (data) {
+            $('#pizza-list tbody').append(`
                         <tr>
                             <td></td>
                             <td></td>
@@ -41,8 +48,7 @@
                             </td>
                         </tr>
                     `);
-    });
-    }
+        }
     });
 </script>
 </body>

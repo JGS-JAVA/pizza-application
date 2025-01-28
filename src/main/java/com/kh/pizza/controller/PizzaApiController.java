@@ -1,6 +1,10 @@
 package com.kh.pizza.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class PizzaApiController {
 
 
@@ -11,7 +15,7 @@ public class PizzaApiController {
     }
 
     @PostMapping("/pizzas")
-    public  createPizza() {
+    public  insertPizza() {
 
         return ;
     }
