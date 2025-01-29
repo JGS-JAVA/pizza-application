@@ -18,38 +18,37 @@
             <th>액션</th>
         </tr>
         </thead>
-        <tbody>
-        <!-- JQuery로 데이터 추가 -->
+        <tbody id="pizza-container">
+
         </tbody>
     </table>
     <a href="/add-pizza.html">메뉴 추가</a>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
-    $.ajax({
-        url: "/api/pizza/insert",
-        method: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({
-            title: $("#title").val(),
-            price: $("#author").val(),
-            description: $("#genre").val(),
-            image: $("#image").val()
-        }),
-        success: function (data) {
-            $('#pizza-list tbody').append(`
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><img src=alt="이미지" style="width: 50px;"></td>
-                            <td>
-                                <a href="">수정</a>
-                                <button >삭제</button>
-                            </td>
-                        </tr>
-                    `);
-        }
-    });
+    $(document).ready(function () {
+        $.ajax({
+            url: '/api/pizzas',
+            method: 'GET',
+            success:
+                function (data) {
+                    $.each(data, function (key, value) {
+                        console.log("key : ", key, "value : ", value);
+                        $('#pizza-container').append(
+                            '<tr class="card">' +
+                            '<td>' + value.name + '</td>' +
+                            '<td>' + value.price + '</td>' +
+                            '<td>' + value.description + '</td>' +
+                            '<td>' + '<img>' + value.image_path + '</td>' +
+                            '</tr>')
+                    })
+                },
+            error:
+                function () {
+                    $('#pizza-container').append('<p>서버에서 데이터를 가져올 수 없습니다.</p>')
+                }
+        })
+    })
 </script>
 </body>
 </html>
