@@ -4,8 +4,8 @@
 <mapper namespace="com.kh.pizza.mapper.PizzaMapper">
     <select id="getAllPizzas">
 
-        SELECT id, title, author, genre, imagePath
-        FROM books
+        SELECT id, name, price, description, image_path
+        FROM pizzamenu
 
     </select>
 
@@ -17,7 +17,7 @@
 
     <insert id="insertPizza">
         INSERT into pizzamenu (name, price, description, image_path)
-        VALUES (#{title}, #{author}, #{genre}, #{image_Path})
+        VALUES (#{name}, #{price}, #{description}, #{image_path})
     </insert>
 
     <update id="editPizza">

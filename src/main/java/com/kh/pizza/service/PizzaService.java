@@ -1,11 +1,12 @@
-package com.kh.pizza.mapper;
+package com.kh.pizza.service;
 
 import com.kh.pizza.dto.Pizza;
-import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-@Mapper
-public interface PizzaMapper {
+@Service
+public interface PizzaService {
     List<Pizza> getAllPizzas();
     Pizza getPizzaById(int id);
     int editPizza(Pizza pizza);
