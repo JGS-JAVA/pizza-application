@@ -28,8 +28,8 @@ public class PizzaApiController {
     }
 
     @PostMapping("/api/pizza/insert")
-    public  insertPizza(@RequestBody Pizza pizza) {
-        return pizzaService.insertPizza(pizza);
+    public void insertPizza(@RequestBody Pizza pizza) {
+        pizzaService.insertPizza(pizza);  // void 라서 return 없다
     }
 }
 

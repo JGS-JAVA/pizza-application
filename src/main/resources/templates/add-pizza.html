@@ -10,22 +10,22 @@
 </head>
 <body>
 <h1>피자 추가</h1>
-<form id="book-form">
-    <label for="title">제목:</label>
-    <input type="text" id="title" name="title" required>
-    <label for="author">저자:</label>
-    <input type="text" id="author" name="author" required>
-    <label for="genre">장르:</label>
-    <input type="text" id="genre" name="genre" required>
-    <label for="imagePath">표지:</label>
-    <input type="text" id="imagePath" name="imagePath" value="https://via.placeholder.com/150" required>
+<form id="pizza-form">
+    <label for="name">제목:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="price">저자:</label>
+    <input type="number" id="price" name="price" required>
+    <label for="description">장르:</label>
+    <input type="text" id="description" name="description" required>
+    <label for="image_path">표지:</label>
+    <input type="file" id="image_path" name="image_path" value="https://via.placeholder.com/150" required>
 
     <button type="submit">추가</button>
 </form>
 
 <script>
     $.ajax({
-        url: "/api/book/insert",
+        url: "/api/pizza/insert",
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify({
@@ -36,7 +36,7 @@
         }),
         success: function (data) {
             alert("피자 등록 성공입니다.");
-            window.location.href = "books"; // 책 목록으로 이동하기
+            window.location.href = "pizzas"; // 목록으로 이동하기
         },
         error: function () {
             alert("데이터베이스에 저장을 실패했습니다. 다시 진행해주세요.");
